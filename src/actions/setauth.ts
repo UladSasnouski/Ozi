@@ -18,7 +18,7 @@ export const setUserData = () => {
 
 export const logOut = () => {
     document.cookie = "token=$ path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-    document.location.pathname = '/login';
+    document.location.pathname = 'OziTAG/login';
     return (dispatch: any) => {
         let { email, id, name } = { email: "", id: NaN, name: "" };
         dispatch(setOut({ email, id, name }));
@@ -32,7 +32,7 @@ export const logIn = (initEmail: any, initPassword: any) => {
             .then(responce => {
                 document.cookie = `token=${responce.data.data.accessToken}`;
                 dispatch(setLogin());
-                document.location.pathname = '/profile';
+                document.location.pathname = 'OziTAG/profile';
             })
             .catch((error) => {
                 dispatch(setError(error));
