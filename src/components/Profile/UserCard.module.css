@@ -1,0 +1,37 @@
+.userCard__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userCard__avatarContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+}
+
+.userCard__profile {
+    min-width: 150px;
+    flex-shrink: 0;
+}
+
+.userCard__profile p {
+    font-size: 24px;
+    margin: 13px 0;
+}
+
+p.userCard__underLine {
+    color: #0ef541;
+    text-align: right;
+    border-top: 2px solid #d6f904;
+    margin: 0;
+}
+
+.userCard__underlineColor {
+    color: #d6f904;
+}
+
+.userCard__imageWrapper {
+    display: flex;
+    align-self: center;
+}
