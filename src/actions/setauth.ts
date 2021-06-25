@@ -13,9 +13,6 @@ export const setUserData = () => {
                 let { email, id, name } = responce.data.data;
                 dispatch(setAuthUserData({ email, id, name }))
             })
-        // .catch(err => {
-        //     dispatch(addFail(err.message));
-        // });
     };
 };
 
@@ -37,9 +34,9 @@ export const logIn = (initEmail: any, initPassword: any) => {
                 dispatch(setLogin());
                 document.location.pathname = '/profile';
             })
-        // .catch(err => {
-        //     dispatch(addFail(err.message));
-        // });
+            .catch((error) => {
+                dispatch(setError(error));
+            });
     };
 };
 
@@ -63,4 +60,11 @@ const setLogOut = () => ({
 
 const setLogin = () => ({
     type: "SET_LOGIN",
+})
+
+const setError = (todo: any) => ({
+    type: "SET_ERROR",
+    data: {
+        ...todo
+    }
 })

@@ -1,11 +1,16 @@
 import React, { useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 interface TextProps {
     login?: any;
 };
-const Login: React.FC<TextProps> = (props) => {
-    const [details, setDetails] = useState({ email: "", password: "" });
 
+interface RootState {
+    error: boolean
+}
+const Login: React.FC<TextProps> = (props) => {
+    var checked: any;
+    const [details, setDetails] = useState({ email: "", password: "" });
     const submitHandler = (e: any) => {
         e.preventDefault();
         validate(details.email)
@@ -13,8 +18,8 @@ const Login: React.FC<TextProps> = (props) => {
             props.login(details)
         }
     };
-    var checked: any;
-
+    const error = (state: RootState) => state.error
+    const isError = useSelector(error)
     const onEmailChange = useCallback((e) => setDetails({ ...details, email: e.target.value }), [validate(details.email)]);
 
     function validate(mail: any) {
@@ -46,8 +51,13 @@ const Login: React.FC<TextProps> = (props) => {
                             <p>Short Password</p>
                         </div>
                     </div>
-                    <input type="submit" value="Submit" />
+                    <div className='flex_user'>
+                        <input type="submit" value="Submit" />
+                    </div>
                 </form>
+                <div className={isError ? 'check active' : 'check'}>
+                    <p>Ops... Invalid request :(</p>
+                </div>
             </div>
         </div>
     )

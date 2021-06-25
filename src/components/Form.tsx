@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../actions/setauth';
+import UserCardFolder from './Profile/UserCardFolder'
 
 interface TextProps {
     data?: any
@@ -10,10 +11,10 @@ const Form: React.FC<TextProps> = (props) => {
     const dispatch = useDispatch();
     return (
         <div>
-            <button onClick={() => { dispatch(logOut()) }}>Logout</button>
-            <h1>{props.data.name}</h1>
-            <p>{props.data.id}</p>
-            <p>{props.data.email}</p>
+            <UserCardFolder user={props.data.name} id={props.data.id} email={props.data.email} />
+            <div className='flex_user'>
+                <button onClick={() => { dispatch(logOut()) }}>Logout</button>
+            </div>
         </div>
     );
 };
